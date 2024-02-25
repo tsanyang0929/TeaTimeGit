@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'TeaTimeDemo1'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B11E1439DB3441EA3F383B4C107F116 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5108BE50819944E9ABCBBF68B07D063C }}
           package: .
