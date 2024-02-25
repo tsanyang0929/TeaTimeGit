@@ -12,7 +12,6 @@ namespace TeaTimeDemo.Areas.Customer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
-
         public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
@@ -24,11 +23,8 @@ namespace TeaTimeDemo.Areas.Customer.Controllers
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category");
             return View(productList);
         }
-
         public IActionResult Details(int productId)
         {
-            //Product product = _unitOfWork.Product.Get(u => u.Id== productId, includeProperties:"Category");
-            //return View(product);
             ShoppingCart cart = new()
             {
                 Product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category"),
@@ -42,31 +38,25 @@ namespace TeaTimeDemo.Areas.Customer.Controllers
         [Authorize]
         public IActionResult Details(ShoppingCart shoppingCart)
         {
-            var claimIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            shoppingCart.ApplicationUserId = userId;
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.ApplicationUser.Id == userId &&
-                                                                        u.ProductId == shoppingCart.ProductId &&
-                                                                        u.Ice == shoppingCart.Ice &&
-                                                                        u.Sweetness == shoppingCart.Sweetness);
+            shoppingCart.ApplicationUserId = userId;
+            
+            ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.ApplicationUser.Id == userId && u.ProductId == shoppingCart.ProductId && u.Ice == shoppingCart.Ice && u.Sweetness == shoppingCart.Sweetness);
             if (cartFromDb != null)
             {
-                //ÁÊª«¨®¤w«Ø¥ß
                 cartFromDb.Count += shoppingCart.Count;
                 _unitOfWork.ShoppingCart.Update(cartFromDb);
             }
             else
             {
-                //·s¼WÁÊª«¨®
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
             }
-
-            TempData["success"] = "¥[¤JÁÊª«¨®¦¨¥\!";
+            TempData["success"] = "åŠ å…¥è³¼ç‰©è»ŠæˆåŠŸï¼";
             _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
         }
-
 
         public IActionResult Privacy()
         {
