@@ -300,3 +300,5 @@ C:\Users\JohnnyYang\source\repos\TeaTimeDemo\TeaTimeDemo\bin\Debug\net8.0\runtim
 C:\Users\JohnnyYang\source\repos\TeaTimeDemo\TeaTimeDemo\bin\Debug\net8.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\JohnnyYang\source\repos\TeaTimeDemo\TeaTimeDemo\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\JohnnyYang\source\repos\TeaTimeDemo\TeaTimeDemo\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\JohnnyYang\source\repos\TeaTimeDemo\TeaTimeDemo\bin\Debug\net8.0\appsettings.Prodution.json
+C:\Users\JohnnyYang\source\repos\TeaTimeDemo\TeaTimeDemo\obj\Debug\net8.0\TeaTimeDemo.sourcelink.json
