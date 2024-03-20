@@ -1,0 +1,1 @@
+<img src= "https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftsanyang0929%2FTeaTimeGit%2Fmaster%2Fbadge.json&query=version&prefix=v&suffix=%20release&label=Johnny&color=success">
